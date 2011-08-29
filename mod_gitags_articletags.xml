@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="1.7"
+	client="site"
+	method="upgrade">
+	<name>mod_gitags_articletags</name>
+	<author>Andy Soell</author>
+	<creationDate>August 26, 2011</creationDate>
+	<copyright>Copyright 2011 The Genteel</copyright>
+	<authorEmail>andy@teamsoell.com</authorEmail>
+	<authorUrl>andy.teamsoell.com</authorUrl>
+	<version>1.0</version>
+	<description>List current article's tags</description>
+	<files>
+		<filename module="mod_footer">mod_gitags_articletags.php</filename>
+		<folder>tmpl</folder>
+		<filename>index.html</filename>		
+		<filename>mod_gitags_articletags.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field
+					name="articleid"
+					type="sql"
+					label="Article"
+					description="Article to display tags for"			
+          query="select id, CONCAT('(', id, ') ', title) as title from #__content order by title ASC"
+          key_field="id" 
+          value_field="title"					
+          />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
